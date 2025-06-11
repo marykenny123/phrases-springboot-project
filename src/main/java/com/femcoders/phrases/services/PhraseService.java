@@ -2,7 +2,10 @@ package com.femcoders.phrases.services;
 
 import com.femcoders.phrases.models.Phrase;
 import com.femcoders.phrases.repositories.PhraseRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +48,14 @@ public class PhraseService {
     }
 
 
+    public Phrase getPhraseById(Long id) {
+        return phraseRepository.findById(id).orElse(null);
+    }
+
+
+
+
 }
-public Phrase getPhraseById(Long id) {
-    return phraseRepository.findById(id);
-}
+//public Phrase getPhraseById(Long id) {
+//    return phraseRepository.findById(id);
+//}
