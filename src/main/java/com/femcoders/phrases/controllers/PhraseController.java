@@ -40,6 +40,39 @@ public class PhraseController {
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
+    // copio delete aqui para retocarlo:
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Phrase> updatePhrase(@PathVariable Long id, @RequestBody Phrase updatedPhrase) {
+        boolean isUpdated = phraseService.updatePhrase(id, updatedPhrase);
+        // Phrase phrase = phraseService.updatePhrase(id, updatedPhrase);
+
+
+        if (!isUpdated) {
+            return new ResponseEntity<Phrase>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    /*
+    para comparar --- texto updatePhrasee en service:
+      public boolean updatePhrase(Long id, Phrase updatedDetails) {
+        if (!phraseRepository.existsById(id)) {
+            return false;
+        }
+        Phrase existingPhrase = phraseRepository.findById(id);
+        existingPhrase.setText(updatedDetails.getText());
+        existingPhrase.setAuthor(updatedDetails.getAuthor());
+        phraseRepository.save(existingPhrase);
+        return true;
+    }
+    */
+
+
+    /* textp metodo getphrasebyid en repository:
+    public Phrase getPhraseById(Long id) {
+        return phraseRepository.findById(id);
+    }
+*/
 }
 
 
