@@ -26,4 +26,5 @@ public class PhraseController {
     public void addPhrase(@RequestBody Phrase newPhrase) {
         phraseService.addPhrase(newPhrase);
     }
+
 }
