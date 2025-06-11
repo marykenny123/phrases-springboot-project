@@ -2,7 +2,6 @@ package com.femcoders.phrases.services;
 
 import com.femcoders.phrases.models.Phrase;
 import com.femcoders.phrases.repositories.PhraseRepository;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,8 +29,23 @@ public class PhraseService {
         }
         phraseRepository.deleteById(id);
         return true;
+    }
 
+    public boolean updatePhrase(Long id, Phrase updatedDetails) {
+        Optional<Phrase> phraseOptional = phraseRepository.findById(id);
+        if (!phraseOptional.isPresent()) {
+            return false; // Phrase not found
+        }
+        Phrase existingPhrase = phraseOptional.get();
+
+        existingPhrase.setText(updatedDetails.getText());
+        existingPhrase.setAuthor(updatedDetails.getAuthor());
+        phraseRepository.save(existingPhrase);
+        return true;
     }
 
 
+}
+public Phrase getPhraseById(Long id) {
+    return phraseRepository.findById(id);
 }
