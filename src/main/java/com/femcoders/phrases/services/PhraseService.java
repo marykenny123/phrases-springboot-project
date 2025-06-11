@@ -8,13 +8,18 @@ import java.util.List;
 
 @Service
 public class PhraseService {
-    private final PhraseRepository eventRepository;
+    private final PhraseRepository phraseRepository;
 
     public PhraseService(PhraseRepository eventRepository) {
-        this.eventRepository = eventRepository;
+        this.phraseRepository = eventRepository;
     }
 
     public List<Phrase> getAllPhrases() {
-        return eventRepository.findAll();
+        return phraseRepository.findAll();
     }
+
+    public Phrase addPhrase(Phrase newPhrase) {
+        return phraseRepository.save(newPhrase);
+    }
+
 }
