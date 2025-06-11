@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class PhraseController {
@@ -29,4 +30,18 @@ public class PhraseController {
 
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Phrase> deletePhrase(@PathVariable Long id) {
+        boolean isDeleted = phraseService.deletePhrase(id);
+
+        if (!isDeleted) {
+            return new ResponseEntity<Phrase>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
 }
+
+
+
+
