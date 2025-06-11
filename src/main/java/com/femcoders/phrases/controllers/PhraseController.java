@@ -2,10 +2,9 @@ package com.femcoders.phrases.controllers;
 
 import com.femcoders.phrases.models.Phrase;
 import com.femcoders.phrases.services.PhraseService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,13 +17,16 @@ public class PhraseController {
     }
 
     @GetMapping("/list-of-phrases")
-    public List<Phrase> getAllPhrases() {
-        return phraseService.getAllPhrases();
+    public ResponseEntity<List<Phrase>> getAllPhrases() {
+        List<Phrase> phrases = phraseService.getAllPhrases();
+        return new ResponseEntity<List<Phrase>>(phrases, HttpStatus.OK);
     }
 
     @PostMapping("/new-phrase")
-    public void addPhrase(@RequestBody Phrase newPhrase) {
-        phraseService.addPhrase(newPhrase);
+    public ResponseEntity<Phrase> addPhrase(@RequestBody Phrase newPhrase) {
+        Phrase createdPhrase = phraseService.addPhrase(newPhrase);
+        return new ResponseEntity<Phrase>(createdPhrase, HttpStatus.CREATED);
+
     }
 
 }
