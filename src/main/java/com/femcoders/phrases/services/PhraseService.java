@@ -37,7 +37,7 @@ public class PhraseService {
     public boolean updatePhrase(Long id, Phrase updatedDetails) {
         Optional<Phrase> phraseOptional = phraseRepository.findById(id);
         if (!phraseOptional.isPresent()) {
-            return false; // Phrase not found
+            return false;
         }
         Phrase existingPhrase = phraseOptional.get();
 
