@@ -56,3 +56,6 @@ public class PhraseService {
 
 
 }
+//public Phrase getPhraseById(Long id) {
+//    return phraseRepository.findById(id);
+//}
