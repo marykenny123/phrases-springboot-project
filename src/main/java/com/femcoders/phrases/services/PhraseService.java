@@ -52,10 +52,4 @@ public class PhraseService {
         return phraseRepository.findById(id).orElse(null);
     }
 
-
-
-
 }
-//public Phrase getPhraseById(Long id) {
-//    return phraseRepository.findById(id);
-//}
