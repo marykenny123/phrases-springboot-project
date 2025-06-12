@@ -14,8 +14,8 @@ import java.util.Optional;
 public class PhraseService {
     private final PhraseRepository phraseRepository;
 
-    public PhraseService(PhraseRepository eventRepository) {
-        this.phraseRepository = eventRepository;
+    public PhraseService(PhraseRepository phraseRepository) {
+        this.phraseRepository = phraseRepository;
     }
 
     public List<Phrase> getAllPhrases() {
